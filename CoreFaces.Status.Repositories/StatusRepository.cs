@@ -8,14 +8,13 @@ using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CoreFaces.Status.Repositories
 {
     public interface IStatusRepository : IBaseRepository<Models.Domain.Status>
     {
         Models.Domain.Status GetByName(string name);
+       List<Models.Domain.Status> GetByGroupName(string name);
         List<Models.Domain.Status> GetAll();
     }
     public class StatusRepository : Licence, IStatusRepository
@@ -39,6 +38,12 @@ namespace CoreFaces.Status.Repositories
         public Models.Domain.Status GetByName(string name)
         {
             Models.Domain.Status model = _databaseContext.Set<Models.Domain.Status>().Where(p => p.Name == name).FirstOrDefault();
+            return model;
+        }
+
+        public List<Models.Domain.Status> GetByGroupName(string name)
+        {
+            List<Models.Domain.Status> model = _databaseContext.Set<Models.Domain.Status>().Where(p => p.GroupName == name).ToList();
             return model;
         }
 

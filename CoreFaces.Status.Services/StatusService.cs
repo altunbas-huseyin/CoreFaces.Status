@@ -2,15 +2,14 @@
 using CoreFaces.Status.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CoreFaces.Status.Services
 {
     public interface IStatusService : IBaseService<Models.Domain.Status>
     {
         Models.Domain.Status GetByName(string name);
+        List<Models.Domain.Status> GetByGroupName(string name);
         List<Models.Domain.Status> GetAll();
 
     }
@@ -47,6 +46,11 @@ namespace CoreFaces.Status.Services
         public Models.Domain.Status GetByName(string name)
         {
             return _statusRepository.GetByName(name);
+        }
+
+        public List<Models.Domain.Status> GetByGroupName(string name)
+        {
+            return _statusRepository.GetByGroupName(name);
         }
 
         public List<Models.Domain.Status> GetAll()
