@@ -12,6 +12,8 @@ namespace CoreFaces.Status.Models.Mapping
             entityBuilder.HasKey(t => t.Id);
             entityBuilder.Property(t => t.Name).IsRequired();
             entityBuilder.Property(t => t.Description).IsRequired();
+            entityBuilder.Property(t => t.GroupName).IsRequired();
+            entityBuilder.Property(t => t.RowNumber).IsRequired();
             entityBuilder.Property(t => t.CreateDate).IsRequired();
             entityBuilder.Property(t => t.UpdateDate).IsRequired();
         }
